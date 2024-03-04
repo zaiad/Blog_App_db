@@ -65,7 +65,8 @@ const login = async (req, res) => {
     }
     const token = await jwt.sign(
       { _id: login_user._id },
-      process.env.TOKEN_KEY
+      process.env.TOKEN_KEY,
+      { expiresIn: "1h" } 
     );
     res.json({
       message: "Login success",
@@ -79,7 +80,13 @@ const login = async (req, res) => {
   }
 };
 
+
+const logout = async(req, res) => {
+
+}
+
 module.exports = {
   register,
   login,
+  logout
 };
